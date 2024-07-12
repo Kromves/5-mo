@@ -6,6 +6,14 @@ class Director(models.Model):
     def __str__(self):
         return self.name
 
+STARS = (
+    (1, '*'),
+    (2, '**'),
+    (3, '***'),
+    (4, '****'),
+    (5, '*****'),
+)
+
 class Movie(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -17,6 +25,7 @@ class Movie(models.Model):
 
 class Review(models.Model):
     text = models.TextField()
+    stars = models.IntegerField(choices=STARS, default=1)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
     def __str__(self):

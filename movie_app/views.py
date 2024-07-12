@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Director, Movie, Review
 from .serializers import DirectorSerializer, MovieSerializer, ReviewSerializer
+from django.db.models import Prefetch
 
 @api_view(['GET'])
 def director_list_api_views(request):
@@ -49,3 +50,13 @@ def review_list_api_views(request):
     serializer = ReviewSerializer(reviews, many=True)
     return Response(serializer.data)
 
+def movie_reviews_list(request):
+    movies = Movie.objects.all()
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def directors_list(request):
+    directors = Director.objects.all()
+    serializer = DirectorSerializer(directors, many=True)
+    return Response(serializer.data)
