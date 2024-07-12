@@ -24,7 +24,6 @@ def director_detail_api_views(request, id):
 
 @api_view(['POST'])
 def director_create_api_view(request):
-    """ Создание нового режиссера """
     serializer = DirectorSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -34,7 +33,6 @@ def director_create_api_view(request):
 
 @api_view(['PUT', 'PATCH'])
 def director_update_api_view(request, id):
-    """ Обновление данных конкретного режиссера по id """
     try:
         director = Director.objects.get(id=id)
     except Director.DoesNotExist:
@@ -49,7 +47,6 @@ def director_update_api_view(request, id):
 
 @api_view(['DELETE'])
 def director_delete_api_view(request, id):
-    """ Удаление конкретного режиссера по id """
     try:
         director = Director.objects.get(id=id)
     except Director.DoesNotExist:
@@ -76,7 +73,6 @@ def movie_detail_api_views(request, id):
 
 @api_view(['POST'])
 def movie_create_api_view(request):
-    """ Создание нового фильма """
     serializer = MovieSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -86,7 +82,6 @@ def movie_create_api_view(request):
 
 @api_view(['PUT', 'PATCH'])
 def movie_update_api_view(request, id):
-    """ Обновление данных конкретного фильма по id """
     try:
         movie = Movie.objects.get(id=id)
     except Movie.DoesNotExist:
@@ -101,7 +96,6 @@ def movie_update_api_view(request, id):
 
 @api_view(['DELETE'])
 def movie_delete_api_view(request, id):
-    """ Удаление конкретного фильма по id """
     try:
         movie = Movie.objects.get(id=id)
     except Movie.DoesNotExist:
@@ -129,7 +123,6 @@ def review_list_api_views(request):
 
 @api_view(['POST'])
 def review_create_api_view(request):
-    """ Создание нового отзыва """
     serializer = ReviewSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -139,7 +132,6 @@ def review_create_api_view(request):
 
 @api_view(['PUT', 'PATCH'])
 def review_update_api_view(request, id):
-    """ Обновление данных конкретного отзыва по id """
     try:
         review = Review.objects.get(id=id)
     except Review.DoesNotExist:
@@ -154,7 +146,6 @@ def review_update_api_view(request, id):
 
 @api_view(['DELETE'])
 def review_delete_api_view(request, id):
-    """ Удаление конкретного отзыва по id """
     try:
         review = Review.objects.get(id=id)
     except Review.DoesNotExist:
